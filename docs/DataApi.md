@@ -2046,3 +2046,33 @@ http://localhost:8080/massage/appuser/getAuthCode.do?userPhone=18859959027
 
 -返回结果： 0-成功，-1 失败
    
+ 41.优惠券激活接口 post
+   - url: **http://hostname:port/massage/appCouponData/getCoupon.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | CUSTOMER_ID | string |  |  | true | 客户的id
+   | CDKEY | string |  |  | false | 激活码 
+   | TYPE | string |  |  | true | 0是实体店，调用需要CDKEY，1是项目直接推送，不需要激活码 
+ - response
+   
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   http://localhost:8080/massage/appCouponData/getCoupon.do?CUSTOMER_ID=1111&CDKEY=555666&TYPE=0
+ 
+ > 返回数据示例
+ 
+     
+   ```json
+{
+    "result": 0,
+    "msg": "领取优惠券成功"
+}
+
+   ```     
